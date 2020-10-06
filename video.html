@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>desacontece</title>
+    <style>
+      html,
+      body {
+        background-color: rgb(11, 11, 11);
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+      }
+      .main {
+        width: 50%;
+        margin: 0 auto;
+      }
+
+      * {
+        color: white;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-weight: bold;
+      }
+      .card {
+        border: 1px solid white;
+        border-radius: 4px;
+        padding: 10px;
+      }
+      .btn {
+        border-radius: 30px;
+        padding: 10px;
+        float: right;
+        margin-top: 1em;
+        color: black;
+        background-color: white;
+        outline: none;
+        border: none;
+      }
+      h1 {
+        text-align: center;
+      }
+      #videoElement {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        min-width: 100%;
+        min-height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="userVideo">
+      <div class="tile">
+        <video autoplay="true" id="videoElement"></video>
+      </div>
+    </div>
+    <script>
+      var video = document.querySelector("#videoElement");
+      if (navigator.mediaDevices.getUserMedia) {
+        navigator.mediaDevices
+          .getUserMedia({ video: true })
+          .then(function (stream) {
+            video.srcObject = stream;
+          })
+          .catch(function (err0r) {
+            console.log("Something went wrong!");
+          });
+      }
+    </script>
+  </body>
+</html>
